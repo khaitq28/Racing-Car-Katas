@@ -1,11 +1,14 @@
 package tddmicroexercises.turnticketdispenser;
 
-public class TurnNumberSequence
-{
-    private static int _turnNumber = 0;
+import java.util.concurrent.atomic.AtomicInteger;
 
-    public static int getNextTurnNumber()
-    {
-        return _turnNumber++;
+public class TurnNumberSequence {
+    private TurnNumberSequence() {
+
+    }
+    private static final AtomicInteger _turnNumber = new AtomicInteger(0);
+
+    public static int getNextTurnNumber() {
+        return _turnNumber.getAndIncrement();
     }
 }
